@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Analysis Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and dark theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Overall Dark Gray Background */
+            color: #d1d5db; /* Light gray text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .report-card {
+            background-color: #1f2937; /* Report Card Background (bg-gray-800) */
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+            max-width: 1000px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .report-header {
+            background-color: #2563eb; /* Primary Accent Color (bg-blue-600) */
+            padding: 20px 30px;
+            color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .report-header h1 {
+            margin: 0;
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+
+        .report-header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Content Section */
+        .report-content {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f3f4f6;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #374151; /* Subtle divider */
+        }
+
+        /* Typography and Colors */
+        .green-text {
+            color: #4ade80; /* text-green-400 */
+            font-weight: 600;
+        }
+
+        .red-text {
+            color: #f87171; /* text-red-400 */
+            font-weight: 600;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #374151;
+        }
+
+        .data-table th {
+            background-color: #374151; /* Table Header (bg-gray-700) */
+            color: #f3f4f6;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: #2d3748; /* Alternating row color */
+        }
+        
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        /* Download Button */
+        #download-btn {
+            background-color: #10b981; /* bg-emerald-500 */
+            color: #1f2937;
+            border: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #download-btn:hover {
+            background-color: #059669; /* darker emerald */
+        }
+
+        /* Meeting Button */
+        .meeting-cta {
+            background-color: #2563eb; /* bg-blue-600 */
+            color: white;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .meeting-cta:hover {
+            background-color: #1d4ed8; /* darker blue */
+        }
+
+        .metric-card-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .metric-card {
+            background-color: #374151; /* Slightly lighter for cards */
+            padding: 15px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .metric-card .label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .metric-card .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .list-section {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .list-section ul {
+            list-style: disc;
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+        }
+        
+        .list-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .chart-placeholder {
+            min-height: 250px;
+            background-color: #374151;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: #9ca3af;
+            font-size: 1.2rem;
+            /* Placeholder to represent charts from the PDF. In a real report, charts would be rendered here. */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-card">
+        <div class="report-header">
+            <h1>Rohnisch SE Competitive Analysis</h1>
+            <p>Beredd.se vs. Repnrun.se — Last 7 Days Overview</p>
+        </div>
+
+        <div class="report-content">
+            
+            <div class="section-title">Executive Summary</div>
+            <p>This report analyzes the competitive pricing strategies of Beredd.se and Repnrun.se on Rohnisch products over the last 7 days. Beredd.se is the market leader, dominating in product count and average price segment, while employing an **Aggressive Deep Discounting** strategy. Repnrun.se maintains a **Moderate but Consistent** approach, focusing on the mid-market segment.</p>
+
+            <div class="metric-card-container">
+                <div class="metric-card">
+                    <div class="label">Beredd Products Tracked</div>
+                    <div class="value green-text">229</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Repnrun Products Tracked</div>
+                    <div class="value">149</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Beredd Avg Price (SEK)</div>
+                    <div class="value">625</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Repnrun Avg Price (SEK)</div>
+                    <div class="value">396</div>
+                </div>
+            </div>
+
+            <div class="chart-placeholder">Placeholder: Current Market Position Comparison Chart</div>
+            
+            <hr style="border-top: 1px solid #374151; margin: 30px 0;">
+
+            <div class="section-title">Discounting Strategy Analysis (Last 7 Days)</div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Beredd.se (Aggressive)</th>
+                        <th>Repnrun.se (Moderate)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Price Cuts</td>
+                        <td><span class="red-text">92</span> cuts across 44 products</td>
+                        <td><span class="red-text">80</span> cuts across 41 products</td>
+                    </tr>
+                    <tr>
+                        <td>Average Reduction per Cut (SEK)</td>
+                        <td><span class="red-text">72.67</span></td>
+                        <td><span class="red-text">31.88</span></td>
+                    </tr>
+                    <tr>
+                        <td>Biggest Single Cut (SEK)</td>
+                        <td><span class="red-text">900</span> (on premium items)</td>
+                        <td><span class="red-text">200</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Price Increases</td>
+                        <td><span class="green-text">271</span> (Dynamic Pricing)</td>
+                        <td><span class="green-text">167</span> (Dynamic Pricing)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="chart-placeholder">Placeholder: Price Decreases Last 7 Days Chart</div>
+
+            <hr style="border-top: 1px solid #374151; margin: 30px 0;">
+
+            <div class="section-title">Key Discounting Patterns & Strategic Insight</div>
+            
+            <div class="list-section">
+                <h3 style="color: #f3f4f6; margin-top: 0; font-size: 1.2rem;">Beredd's Major Cuts:</h3>
+                <ul>
+                    <li>Used **Massive discounting** with 37 cuts on November 13th alone, making it their biggest discounting day.</li>
+                    <li>Executed major reductions on premium Rohnisch products (e.g., 5 products cut by **900 SEK each** from 2,999 to 2,098 SEK).</li>
+                    <li>**Strategy:** Uses dramatic deep cuts on premium items to capture attention and drive traffic.</li>
+                </ul>
+            </div>
+            
+            <div class="list-section">
+                <h3 style="color: #f3f4f6; margin-top: 0; font-size: 1.2rem;">Repnrun's Strategy:</h3>
+                <ul>
+                    <li>Maintains **more consistent daily activity** with 15-17 cuts on November 13th, 16th, and 17th.</li>
+                    <li>Targets **mid-range** Rohnisch products (e.g., 699-524 SEK cuts of 175 SEK).</li>
+                    <li>**Strategy:** Employs steady moderate discounting to maintain competitive positioning in the mid-market segment.</li>
+                </ul>
+            </div>
+
+            <div class="chart-placeholder">Placeholder: Key Discounting Patterns Chart</div>
+            
+            <hr style="border-top: 1px solid #374151; margin: 30px 0;">
+
+            <div class="section-title">Competitive Impact & Price Leadership</div>
+
+            <p>Both vendors are active price leaders on a significant number of products, indicating a highly dynamic pricing environment.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Leading Products</th>
+                        <th>Total Products Tracked</th>
+                        <th>Price Leadership Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Beredd.se</td>
+                        <td><span class="green-text">185</span></td>
+                        <td>229</td>
+                        <td><span class="green-text">81%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Repnrun.se</td>
+                        <td><span class="green-text">64</span></td>
+                        <td>149</td>
+                        <td><span class="green-text">43%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <hr style="border-top: 1px solid #374151; margin: 30px 0;">
+
+            <div style="text-align: center; padding: 20px 0;">
+                <div class="section-title" style="border-bottom: none; margin-bottom: 10px;">Next Steps</div>
+                <p>Discuss the strategic implications of these discounting patterns and how to optimize your own pricing strategy.</p>
+                <a href="https://meetings-eu1.hubspot.com/daniel-self" target="_blank" class="cta-button meeting-cta">Book a Meeting</a>
+            </div>
+
+        </div>
+    </div>
+
+    <button id="download-btn" class="cta-button">Download Report (.html)</button>
+
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Competitive_Analysis_Report.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
