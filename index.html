@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohnisch Competitive Analysis Report</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Rohnisch SE - Competitive Analysis Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -12,234 +12,187 @@
             background-color: #111827; /* Dark Gray Background */
         }
         .report-card {
-            background-color: #1f2937; /* Lighter Gray Card Background */
+            background-color: #1f2937; /* Slightly Lighter Gray Card Background */
+            color: #f3f4f6; /* Light Text */
         }
-        .header-accent {
-            background-color: #2563eb; /* Medium Blue (bg-blue-600) */
+        .header-blue {
+            background-color: #2563eb; /* Medium Blue (blue-600) */
         }
-        .positive-text {
-            color: #4ade80; /* Green (text-green-400) */
+        .text-green {
+            color: #4ade80; /* Green (green-400) */
         }
-        .negative-text {
-            color: #f87171; /* Red (text-red-400) */
+        .text-red {
+            color: #f87171; /* Red (red-400) */
         }
-        .bar-chart-container {
-            display: flex;
-            align-items: flex-end;
-            height: 300px;
-            padding: 20px 0;
-            border-bottom: 1px solid #374151;
+        .table-header {
+            background-color: #374151; /* Dark Gray (gray-700) */
         }
-        .bar-chart-container .bar {
-            width: 50px;
-            margin: 0 10px;
-            transition: height 0.5s ease-out;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            position: relative;
+        .table-row-odd {
+            background-color: #1f2937; /* Same as card background */
         }
-        .bar-chart-container .label {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-45deg);
-            white-space: nowrap;
-            font-size: 12px;
-            color: #d1d5db;
+        .table-row-even {
+            background-color: #3741511a; /* Slightly lighter shade for alternating rows */
         }
-        .y-axis {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: space-between;
-            height: 300px;
-            width: 40px;
-            padding: 0 5px;
-            color: #9ca3af;
-            font-size: 12px;
-            text-align: right;
-        }
-        .chart-wrapper {
-            display: flex;
-            width: 100%;
-        }
-        /* Color classes for charts */
-        .color-beredd-black { background-color: #000000; }
-        .color-repnrun-teal { background-color: #00a69a; }
-        .color-beredd-red { background-color: #ef4444; }
-        .color-repnrun-orange { background-color: #f97316; }
-
     </style>
 </head>
-<body class="p-8">
+<body>
 
-    <div id="report-content" class="report-card max-w-6xl mx-auto rounded-xl shadow-2xl overflow-hidden text-gray-200">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div id="report-content" class="report-card rounded-xl shadow-2xl overflow-hidden">
 
-        <header class="header-accent p-6 text-white">
-            <h1 class="text-3xl font-bold">Rohnisch SE Competitive Analysis Report</h1>
-            <p class="text-sm mt-1">Generated: November 19, 2025</p>
-        </header>
+            <div class="header-blue p-6 sm:p-8">
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                    Rohnisch SE Competitive Pricing Analysis
+                </h1>
+                <p class="text-blue-100 mt-1 sm:mt-2 text-lg">
+                    Discounting Strategy Comparison: Beredd.se vs. Repnrun.se (Last 7 Days)
+                </p>
+                <p class="text-blue-200 mt-1 text-sm">
+                    Date Generated: November 19, 2025
+                </p>
+            </div>
 
-        <div class="p-8 space-y-8">
+            <div class="p-6 sm:p-8 space-y-10">
 
-            <section>
-                <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Executive Summary</h2>
-                <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-                    <li>Beredd.se dominates the market, tracking 229 products compared to Repnrun.se's 149 products.</li>
-                    <li>Beredd.se targets a higher price segment (625 SEK average) with an aggressive deep discounting strategy.</li>
-                    <li>Repnrun.se focuses on lower-priced items (396 SEK average) with a moderate but consistent discounting approach.</li>
-                    <li>Beredd is the price leader on 81% of its tracked products, while Repnrun leads on 43% of theirs.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Market Position Comparison</h2>
-
-                <div class="overflow-x-auto mb-6">
-                    <table class="min-w-full text-sm text-left text-gray-400">
-                        <thead class="text-xs uppercase bg-gray-700 text-gray-200">
-                            <tr>
-                                <th scope="col" class="py-3 px-6">Vendor</th>
-                                <th scope="col" class="py-3 px-6">Products Tracked</th>
-                                <th scope="col" class="py-3 px-6">Average Price</th>
-                                <th scope="col" class="py-3 px-6">Price Leader %</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-gray-800 border-b border-gray-700">
-                                <th scope="row" class="py-4 px-6 font-medium text-gray-100 whitespace-nowrap">Beredd.se</th>
-                                <td class="py-4 px-6">229</td>
-                                <td class="py-4 px-6 positive-text">625 SEK</td>
-                                <td class="py-4 px-6 positive-text">81% (185/229)</td>
-                            </tr>
-                            <tr class="bg-gray-900 border-b border-gray-700">
-                                <th scope="row" class="py-4 px-6 font-medium text-gray-100 whitespace-nowrap">Repnrun.se</th>
-                                <td class="py-4 px-6">149</td>
-                                <td class="py-4 px-6 negative-text">396 SEK</td>
-                                <td class="py-4 px-6 negative-text">43% (64/149)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="text-xl font-medium mb-3">Current Market Position Chart</h3>
-                <div class="flex items-center p-4 rounded-lg bg-gray-800">
-                    <div class="y-axis">
-                        <span>800</span>
-                        <span>600</span>
-                        <span>400</span>
-                        <span>200</span>
-                        <span>0</span>
-                    </div>
-                    <div class="bar-chart-container flex-grow h-[300px]">
-                        <div class="bar color-beredd-black h-[30%] relative" style="height: calc((229 / 800) * 100%);">
-                            <span class="label">Beredd Pr...</span>
-                        </div>
-                        <div class="bar color-repnrun-teal h-[18.6%] relative" style="height: calc((149 / 800) * 100%);">
-                            <span class="label">Repnrun P..</span>
-                        </div>
-                        <div class="bar color-beredd-red h-[75%] relative" style="height: calc((600 / 800) * 100%);">
-                            <span class="label">Beredd Av.</span>
-                        </div>
-                        <div class="bar color-repnrun-orange h-[50%] relative" style="height: calc((400 / 800) * 100%);">
-                            <span class="label">Repnrun A</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Discounting Strategy (Last 7 Days)</h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-5 rounded-lg border border-gray-700 bg-gray-800">
-                        <h3 class="text-xl font-medium mb-3 positive-text">Beredd.se: Aggressive Deep Discounting</h3>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-                            <li>Total Price Cuts: 92 across 44 different products.</li>
-                            <li>Average Reduction: <span class="positive-text">72.67 SEK</span> per cut.</li>
-                            <li>Biggest Single Cut: <span class="positive-text">900 SEK</span> (on premium Rohnisch products).</li>
-                            <li>Dynamic Pricing: Also made 271 price increases.</li>
-                            <li>Major Cuts Day: November 13th (37 cuts, including 5 products cut by 900 SEK each).</li>
-                        </ul>
-                    </div>
-
-                    <div class="p-5 rounded-lg border border-gray-700 bg-gray-800">
-                        <h3 class="text-xl font-medium mb-3 negative-text">Repnrun.se: Moderate but Consistent</h3>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-                            <li>Total Price Cuts: 80 across 41 products.</li>
-                            <li>Average Reduction: <span class="negative-text">31.88 SEK</span> per cut.</li>
-                            <li>Biggest Single Cut: 200 SEK.</li>
-                            <li>Dynamic Pricing: Made 167 increases alongside cuts.</li>
-                            <li>Consistent Activity: 15-17 cuts on November 13th, 16th, and 17th.</li>
-                            <li>Target: Mid-range Rohnisch products (e.g., 175 SEK cuts on 699-524 SEK items).</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h3 class="text-xl font-medium mb-3">Price Decreases Last 7 Days (Count)</h3>
-                <div class="flex items-center p-4 rounded-lg bg-gray-800">
-                    <div class="y-axis">
-                        <span>100</span>
-                        <span>75</span>
-                        <span>50</span>
-                        <span>25</span>
-                        <span>0</span>
-                    </div>
-                    <div class="bar-chart-container flex-grow h-[300px]">
-                        <div class="bar color-beredd-black h-[92%] relative">
-                            <span class="label">Beredd De..</span>
-                        </div>
-                        <div class="bar color-repnrun-teal h-[80%] relative">
-                            <span class="label">Repnrun D..</span>
-                        </div>
-                        <div class="bar color-beredd-red h-[72.67%] relative">
-                            <span class="label">Beredd Av..</span>
-                        </div>
-                        <div class="bar color-repnrun-orange h-[31.88%] relative">
-                            <span class="label">Repnrun A</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-4">Strategic Insight & Recommendation</h2>
-                
-                <div class="mb-4">
-                    <h3 class="text-xl font-medium mb-2 text-blue-400">Strategic Insight:</h3>
-                    <p class="text-gray-300">
-                        Beredd.se utilizes dramatic, deep cuts on premium items to capture attention and drive traffic. This is a high-impact, event-driven strategy.
-                        Repnrun.se employs steady, moderate discounting to maintain competitive positioning in the mid-market segment. This is a consistent, volume-driven strategy.
-                        Both vendors are highly active with dynamic pricing, frequently adjusting prices up and down.
+                <div>
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4">
+                        Executive Summary
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        The competitive landscape for Rohnisch in the Swedish market is dominated by two highly active, dynamically priced vendors: Beredd.se and Repnrun.se. Beredd.se operates with an aggressive, deep discounting strategy focused on premium products and holds a superior market position, leading on 81% of its tracked products. Repnrun.se, in contrast, employs a moderate, consistent discounting strategy targeting mid-range items and is the price leader on 43% of its tracked products. Both show intense dynamic pricing activity, with numerous price cuts and increases over the last seven days.
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="text-xl font-medium mb-2 text-green-400">Recommendation for Rohnisch:</h3>
-                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-300">
-                        <li><strong>Counter Beredd:</strong> Develop a strategy to either match their deep cuts on specific high-value items for short, impactful campaigns, or focus on exclusive products/bundles where direct price comparison is difficult.</li>
-                        <li><strong>Counter Repnrun:</strong> Implement a system for daily, micro-adjustments on mid-range inventory to maintain parity with Repnrun's consistent activity and protect the mid-market share.</li>
-                        <li><strong>Monitor Increases:</strong> Analyze the specific products where competitors are raising prices (e.g., Beredd's 271 increases) to identify immediate opportunities for aggressive, but profitable, price-leading action.</li>
-                    </ul>
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4">
+                        Market Position Overview
+                    </h2>
+                    <div class="space-y-4">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <li class="p-4 rounded-lg bg-gray-800">
+                                <p class="text-lg font-semibold text-white">Beredd.se</p>
+                                <p class="text-gray-400">Products Tracked: <span class="text-white font-mono">229</span></p>
+                                <p class="text-gray-400">Average Price Segment: <span class="text-white font-mono">625 SEK (Higher)</span></p>
+                                <p class="text-gray-400">Price Leadership: <span class="text-green font-bold">81%</span> (185 out of 229 products)</p>
+                            </li>
+                            <li class="p-4 rounded-lg bg-gray-800">
+                                <p class="text-lg font-semibold text-white">Repnrun.se</p>
+                                <p class="text-gray-400">Products Tracked: <span class="text-white font-mono">149</span></p>
+                                <p class="text-gray-400">Average Price Segment: <span class="text-white font-mono">396 SEK (Lower)</span></p>
+                                <p class="text-gray-400">Price Leadership: <span class="text-green font-bold">43%</span> (64 out of 149 products)</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
 
-            <section class="pt-6 border-t border-gray-700 flex justify-between items-center">
-                <h2 class="text-2xl font-semibold">Next Steps</h2>
-                <a href="https://meetings-eu1.hubspot.com/daniel-self" target="_blank" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg shadow-lg transition duration-200">
-                    Book a Meeting
-                </a>
-            </section>
+                <div>
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4">
+                        Discounting Strategy Analysis (Last 7 Days)
+                    </h2>
 
-            <div class="text-right mt-6">
-                <button onclick="downloadReport()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg transition duration-200">
-                    Download Report
-                </button>
+                    <div class="overflow-x-auto mb-6">
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead>
+                                <tr class="table-header text-left text-sm font-semibold uppercase tracking-wider text-gray-200">
+                                    <th class="px-4 py-3">Metric</th>
+                                    <th class="px-4 py-3">Beredd.se</th>
+                                    <th class="px-4 py-3">Repnrun.se</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-800">
+                                <tr class="table-row-odd">
+                                    <td class="px-4 py-3 font-medium">Total Price Cuts</td>
+                                    <td class="px-4 py-3 text-red">92</td>
+                                    <td class="px-4 py-3 text-red">80</td>
+                                </tr>
+                                <tr class="table-row-even">
+                                    <td class="px-4 py-3 font-medium">Unique Products Cut</td>
+                                    <td class="px-4 py-3">44</td>
+                                    <td class="px-4 py-3">41</td>
+                                </tr>
+                                <tr class="table-row-odd">
+                                    <td class="px-4 py-3 font-medium">Average Reduction per Cut</td>
+                                    <td class="px-4 py-3 text-red">72.67 SEK</td>
+                                    <td class="px-4 py-3 text-red">31.88 SEK</td>
+                                </tr>
+                                <tr class="table-row-even">
+                                    <td class="px-4 py-3 font-medium">Biggest Single Cut</td>
+                                    <td class="px-4 py-3 text-red">900 SEK</td>
+                                    <td class="px-4 py-3 text-red">200 SEK</td>
+                                </tr>
+                                <tr class="table-row-odd">
+                                    <td class="px-4 py-3 font-medium">Total Price Increases</td>
+                                    <td class="px-4 py-3 text-green">271</td>
+                                    <td class="px-4 py-3 text-green">167</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-5 rounded-lg border border-red-800 bg-red-900/20">
+                            <h3 class="text-xl font-semibold text-red-400 mb-2">Beredd.se: Aggressive Deep Discounting</h3>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li>Focuses on premium Rohnisch products (e.g., a 900 SEK cut on items from 2,999 to 2,098 SEK).</li>
+                                <li>Uses dramatic deep cuts to capture attention and drive traffic.</li>
+                                <li>Highly dynamic: 37 cuts made on a single day (November 13th), which was their biggest discounting day.</li>
+                                <li>High volume of price increases (271) indicates a very active dynamic pricing engine.</li>
+                            </ul>
+                        </div>
+                        <div class="p-5 rounded-lg border border-green-800 bg-green-900/20">
+                            <h3 class="text-xl font-semibold text-green-400 mb-2">Repnrun.se: Moderate but Consistent</h3>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li>Focuses on mid-range Rohnisch products (e.g., 175 SEK cuts on items from 699 to 524 SEK).</li>
+                                <li>Employs steady, moderate discounting to maintain competitive positioning in the mid-market.</li>
+                                <li>More consistent daily activity, with 15-17 cuts on November 13th, 16th, and 17th.</li>
+                                <li>Smaller absolute reductions (Avg. 31.88 SEK/cut) but frequent adjustments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4">
+                        Strategic Insight & Opportunities
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">Competitive Edge</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>Beredd's massive cuts on premium items create significant market noise and establish them as the primary price agitator for high-value Rohnisch products.</li>
+                                <li>Repnrun's consistency ensures they remain highly competitive and potentially more predictable for consumers shopping for mid-range items.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white mb-2">Opportunities for Action</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li><span class="font-semibold text-yellow-400">Premium Segment:</span> Monitor Beredd's November 13th activity closely; use a price-matching strategy on Beredd's biggest cut products to mitigate attention capture.</li>
+                                <li><span class="font-semibold text-yellow-400">Mid-Range Segment:</span> Introduce flash sales or tiered discounts to disrupt Repnrun's consistent activity and challenge their 43% price leadership.</li>
+                                <li><span class="font-semibold text-yellow-400">Dynamic Pricing:</span> Leverage insights from both vendors' high volume of price increases and cuts to optimize your own dynamic pricing triggers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-center rounded-b-xl">
+                <div class="mb-4 sm:mb-0">
+                    <h3 class="text-xl font-semibold text-white">Next Steps: Review & Strategy Session</h3>
+                    <p class="text-gray-400">Discuss how to leverage this competitive intelligence.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <button onclick="downloadReport()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 w-full sm:w-auto">
+                        Download Report
+                    </button>
+                    <a href="https://meetings-eu1.hubspot.com/daniel-self" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-center font-bold py-2 px-4 rounded transition duration-300 w-full sm:w-auto">
+                        Book a Meeting
+                    </a>
+                </div>
             </div>
 
         </div>
-        </div>
+    </div>
 
     <script>
         function downloadReport() {
